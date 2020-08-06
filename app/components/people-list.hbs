@@ -1,0 +1,16 @@
+{{!-- the @ indicates that title is an argument that will be passed into the component --}}
+<h2>{{@title}}</h2>
+
+<ul>
+  {{!-- using the each helper to loop through each array item from @people --}}
+  {{!-- array is passed in from the @model hook in the scientists route, via scientists.hbs --}}
+  {{#each @people as |person|}}
+    <li>
+      {{!-- here using the fn helper in order to call the showPerson method and pass the argument "person" to it --}}
+      {{!-- without fn helper (on "click" this.showPerson), we would get "[Object MouseEvent]" --}}
+      <button type="button" {{on "click" (fn this.showPerson person)}}>{{person}}</button>
+    </li>
+  {{/each}}
+</ul>
+
+{{outlet}}
